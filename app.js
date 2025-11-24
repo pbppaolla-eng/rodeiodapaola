@@ -83,7 +83,7 @@ const renderPage = (message = "") => `<!doctype html>
   <meta charset="utf-8">
   <!-- Meta tag para responsividade em dispositivos móveis -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Rodeio da Paola</title>
+  <title>Rodeio Farroupilha</title>
   <!-- Importa ícones da biblioteca FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -286,11 +286,11 @@ const renderPage = (message = "") => `<!doctype html>
   <div class="corner-glow glow-bottom-right"></div>
 
   <header>
-    <h1>Rodeio da Paola</h1>
+    <h1>Rodeio Farroupilha</h1>
     <div class="info">
       <div><i class="fa-solid fa-location-dot"></i> Guaíba - RS</div>
-      <div><i class="fa-solid fa-calendar-days"></i> 01/12/2025</div>
-      <div><i class="fa-solid fa-clock"></i> 08h - 14h</div>
+      <div><i class="fa-solid fa-calendar-days"></i> 20/09/2026</div>
+      <div><i class="fa-solid fa-clock"></i> 08h - 20h</div>
     </div>
   </header>
 
@@ -321,7 +321,7 @@ const renderPage = (message = "") => `<!doctype html>
   </div>
 
   <footer>
-    <p>© 2025 Rodeio da Paola — Todos os direitos reservados.</p>
+    <p>© 2025 Rodeio Farroupilha — Todos os direitos reservados.</p>
   </footer>
 
   <div id="sound-toggle"><i class="fa-solid fa-volume-high"></i></div>
