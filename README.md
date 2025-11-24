@@ -1,170 +1,97 @@
-# 🐎 Rodeio da Paola — Landing Page de Inscrição
-
-Uma aplicação Node.js simples que apresenta um evento de rodeio e permite inscrições gratuitas através de um formulário.  
-As informações são armazenadas localmente em um banco de dados SQLite.
-
----
-
-## 🌾 Visão Geral
-
-**Rodeio da Paola** é uma landing page moderna e temática, construída para promover um evento de rodeio em **Guaíba - RS**, com data e horário definidos.  
-O projeto usa **Node.js**, **Express** e **SQLite** para armazenar inscrições, além de trazer elementos visuais e sonoros como:
-
-- Fundo com imagem translúcida (`resources/rodeo.jpg`)  
-- Efeitos de fade-in e partículas (raios de sol e brilho nos cantos)  
-- Áudio ambiente com **trotes de cavalo**
-- Modal de confirmação após a inscrição  
-- Estilo rústico, porém elegante 🌾  
-
----
-
-## 🧱 Estrutura do Projeto
-
-```
-rodeio-farroupilha/
-├─ app.js
-├─ inscricoes.db  ← será criado automaticamente
-├─ package.json
-└─ resources/
-   ├─ rodeo.jpg
-   └─ trote.mp3
-```
----
-
-## ⚙️ Tecnologias Utilizadas
-
-| Categoria | Ferramenta / Biblioteca |
-|------------|-------------------------|
-| Servidor | [Node.js](https://nodejs.org/) |
-| Framework Web | [Express](https://expressjs.com/) |
-| Banco de Dados | [SQLite](https://www.sqlite.org/) |
-| Conector SQLite | `sqlite` e `sqlite3` |
-| Middleware | `body-parser` |
-| Estilo | CSS + Font Awesome |
-| Interface | HTML + animações em CSS |
-| Efeitos Visuais | Partículas e gradientes |
-| Som | `<audio>` com loops leves (trotes) |
-
----
-
-## 🚀 Como Executar Localmente
-
-### 1. Clone o repositório ou copie os arquivos
-
+# 🐎 Bem-vindo ao Rodeio da Paola!
+ 
+Olá! 👋 Que bom ter você por aqui conferindo este projeto.
+ 
+Este não é apenas um formulário de inscrição; é uma tentativa de trazer um pouquinho da atmosfera do campo para o navegador. Criei esta landing page para gerenciar as inscrições do Rodeio em Guaíba - RS, mas com um toque especial: queria que o usuário sentisse o clima rústico e elegante logo ao entrar.
+ 
+Tem som de trote de cavalo, tem partículas de luz e, claro, funciona direitinho para garantir o lugar da galera no evento! 🌾
+ 
+## 🤔 O que é e como funciona?
+ 
+Basicamente, é uma aplicação web onde o pessoal coloca **Nome**, **E-mail** e **Telefone** para se inscrever.
+ 
+O diferencial está na experiência:
+*   **Visual:** Usei uma imagem de fundo translúcida e partículas flutuantes para dar aquele ar de "fim de tarde no campo".
+*   **Sonoro:** Tem um áudio ambiente bem suave de cavalos (prometo que não é alto nem irritante!).
+*   **Técnico:** Tudo o que é digitado vai direto para um banco de dados **PostgreSQL** na nuvem, pronto para escalar!
+ 
+## 🛠️ O que eu usei para construir (Tech Stack)
+ 
+Escolhi ferramentas que gosto e que resolvem o problema de forma simples e robusta:
+ 
+*   **Node.js + Express:** Porque montar um servidor em JS é vida! É rápido, leve e perfeito para essa aplicação.
+*   **PostgreSQL (Neon/Vercel):** Inicialmente usávamos SQLite, mas migramos para Postgres para permitir o deploy na Vercel e garantir que os dados fiquem seguros na nuvem.
+*   **HTML5 & CSS3 (Puro):** Sem frameworks pesados tipo React ou Angular aqui. Quis fazer "na unha" para caprichar nas animações e deixar o site super leve.
+ 
+## 👩‍💻 Bora colocar para rodar?
+ 
+Se você quiser testar na sua máquina, é super simples. Segue o passo a passo:
+ 
+### 1. Baixe o projeto
+ 
+Primeiro, clone o repositório ou baixe os arquivos:
+ 
 ```bash
 git clone https://github.com/seuusuario/rodeio-da-paola.git
 cd rodeio-da-paola
 ```
-
-### 2. Instale as dependências
-
+ 
+### 2. Instale o que precisa
+ 
+O projeto precisa de algumas dependências do Node. Rode aí no terminal:
+ 
 ```bash
-npm install express body-parser sqlite sqlite3
+npm install
 ```
-
-### 3. Execute o servidor
-
+(Isso vai baixar o Express, o conector do Postgres `pg` e o `dotenv`).
+ 
+### 3. Configure o Banco de Dados
+ 
+Como estamos usando PostgreSQL, você precisa configurar as credenciais.
+Crie um arquivo `.env` na raiz do projeto e adicione sua string de conexão:
+ 
+```env
+DATABASE_URL=sua_string_de_conexao_postgres_aqui
+```
+ 
+### 4. Valendo!
+ 
+Agora é só iniciar o servidor:
+ 
 ```bash
 node app.js
 ```
-
-> Se estiver tudo certo, você verá:
->
+ 
+Se aparecer a mensagem abaixo, deu tudo certo:
 > 🌾 Servidor rodando em http://localhost:3000
-
-### 4. Acesse no navegador
-
-[http://localhost:3000](http://localhost:3000)
-
----
-
-## 🗂️ Banco de Dados (SQLite)
-
-As inscrições são salvas automaticamente em um arquivo local chamado **`inscricoes.db`**.
-
-### Estrutura da tabela:
+ 
+Agora é só abrir seu navegador e acessar o link! 🎉
+ 
+## 💾 "E os dados, vão para onde?"
+ 
+Boa pergunta! Eles vão para o seu banco **PostgreSQL**.
+Assim que você rodar o projeto, o código verifica e cria a tabela `inscricoes` automaticamente se ela não existir.
+ 
+Se você quiser espiar quem se inscreveu, pode usar qualquer cliente SQL (como DBeaver, pgAdmin) ou o painel do seu provedor (Neon/Vercel) e rodar:
+ 
 ```sql
-CREATE TABLE inscricoes (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome TEXT NOT NULL,
-  email TEXT NOT NULL,
-  telefone TEXT NOT NULL
-);
-```
-
----
-
-## 🔍 Como Consultar o Banco
-
-Você pode acessar o arquivo SQLite de diversas formas:
-
-### 💻 Usando o CLI
-```bash
-sqlite3 inscricoes.db
-```
-
-No prompt:
-```sql
-.tables
 SELECT * FROM inscricoes;
-.exit
 ```
-
-### 🧩 Usando o VS Code
-Instale a extensão **SQLite Viewer** ou **SQLite Explorer**  
-Abra o arquivo `.db` → clique com o botão direito → “Open Database”.
-
-### 🪟 Usando uma Interface Gráfica
-- [DB Browser for SQLite](https://sqlitebrowser.org)  
-- [SQLiteStudio](https://sqlitestudio.pl)
-
-Ambos permitem navegar, filtrar e exportar os dados.
-
----
-
-## 💡 Recursos Visuais e Efeitos
-
-- **Animação de entrada (fade-in + slide)**  
-- **Botão pulsante** com efeito de destaque  
-- **Gradiente suave** sobre imagem de fundo  
-- **Partículas flutuantes** simulando raios de sol  
-- **Brilho leve nos cantos** da tela  
-- **Som ambiente** reproduzido em loop leve  
-
----
-
-## 🧠 Decisões Técnicas
-
-1. **Node.js + Express** foram escolhidos pela simplicidade e familiaridade com aplicações web leves.  
-2. **SQLite** é usado como banco embutido para facilitar testes e evitar dependências externas.  
-3. **HTML e CSS puros**, sem frameworks front-end, mantendo a leveza e o foco no tema.  
-4. O **fundo com imagem translúcida** cria profundidade sem perder legibilidade.  
-5. **Animações suaves** e **sons leves** ajudam na imersão sem distrair o usuário.
-
----
-
-## 🔐 Validação do Formulário
-
-O formulário HTML exige todos os campos: **Nome**, **Email** e **Telefone**.  
-A validação é feita tanto no front-end (HTML5 `required`) quanto no back-end (Express).
-
----
-
-## 🧾 Licença
-
-Este projeto é livre para uso e modificação pessoal.  
-Créditos e referências são bem-vindos.
-
----
-
-## 🌟 Créditos
-
-- Imagem de fundo: foto de rodeio (coloque a sua em `resources/rodeo.jpg`)  
-- Sons ambiente: gravações livres de direitos autorais (coloque em `resources/`)  
-- Ícones: [Font Awesome](https://fontawesome.com/)  
-- Desenvolvido com ❤️ e café por **Paola Bica Perez**
-
----
-
-> “Onde o campo encontra o código e o vento carrega o som dos cascos.”
-"# rodeio" 
+ 
+## ✨ Detalhes que eu amo nesse projeto
+ 
+*   Tentei fugir do "formulário padrão cinza".
+*   Dê uma olhada no **fade-in** quando a página carrega.
+*   Passe o mouse sobre o botão de inscrição (tem um efeito pulsante).
+*   Preste atenção no **modal de confirmação** que aparece quando você envia os dados. Foi feito com carinho para dar um feedback visual claro pro usuário.
+ 
+## 🤝 Contribuições e Uso
+ 
+Sinta-se totalmente à vontade para usar esse código, modificar, colocar a foto do seu próprio evento ou melhorar o CSS.
+Se tiver alguma ideia legal de como melhorar (talvez adicionar envio de e-mail automático?), pode abrir um Pull Request ou me chamar!
+ 
+## ❤️ Créditos
+ 
+Feito com muita dedicação, café e código por **Paola Bica Perez**.
+ 
+> "Onde o campo encontra o código e o vento carrega o som dos cascos."
