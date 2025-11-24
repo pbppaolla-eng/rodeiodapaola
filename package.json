@@ -1,0 +1,15 @@
+{
+  "name": "rodeio-farroupilha",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.1",
+    "pg": "^8.11.3"
+  }
+}
